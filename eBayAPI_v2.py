@@ -23,13 +23,14 @@ Metadata = ''
 
 
 def Call_eBay():
-    pagecount = 1  
+    pagecount = 1
+    global Make
+    global Model
+    global Metadata
+    global data_response  
     for everyline in PullAPartList:
-        global Make
         Make = everyline[:everyline.index("|")]
-        global Model
         Model = everyline[everyline.index("|")+1:everyline.index("|",everyline.index("|")+1)]
-        global Metadata
         Metadata = everyline[everyline.index("$")+1:everyline.index("$",everyline.index("$")+1)]
         Keywords = everyline[everyline.rindex("|")+1:]
         api.execute("findCompletedItems", {
@@ -43,7 +44,6 @@ def Call_eBay():
                 {"entriesPerPage" : "100"},
                 {"pageNumber" : "%s" %(pagecount)}]
         })
-        global data_response
         data_response = api.response.dict()
         if int(data_response["paginationOutput"]["totalEntries"]) == 0:
             skipped = ("Skipped: %s %s %s %s" %(Make , Model, Metadata, Keywords))
