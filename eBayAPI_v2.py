@@ -2,7 +2,7 @@ from ebaysdk.finding import Connection as finding
 import json
 import mysql.connector
 
-api = finding (appid ='JuanNune-firstpro-PRD-68bba84e8-9a4c6126', config_file=None)
+api = finding (appid ='68bba84e8-9a4c6126', config_file=None)
 savesrawfile = open("eBayAutoDataRaw.txt", "a", encoding = "utf-8")
 PullAPartList = open("PullAPartList.txt", "r")
 saveseBayAPIlogfile = open("eBayAPIlogfile.txt", "a", encoding = "utf-8")
@@ -10,7 +10,7 @@ saveseBayAPIlogfile = open("eBayAPIlogfile.txt", "a", encoding = "utf-8")
 mydb = mysql.connector.connect(
     host = 'localhost',
     user = 'root',
-    passwd = 'Qazxsw!2',
+    passwd = 'XXXXXXX',
     database = 'eBayAutoListings',
     )
 my_cursor = mydb.cursor()
